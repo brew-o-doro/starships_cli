@@ -1,15 +1,22 @@
 # what do you want your object to look like?
 
-class Starships
+class Starship
 
     @@all = []
     attr_accessor :name, :model, :manufacturer, :cost_in_credits
 
-    def initialize( name, model, manufacturer, cost_in_credits)
-        @name = name
-        @model = model
-        @manufacturer = manufacturer
-        @cost_in_credits = cost_in_credits
+    # def initialize( name, model, manufacturer, cost_in_credits)
+    #     @name = name
+    #     @model = model
+    #     @manufacturer = manufacturer
+    #     @cost_in_credits = cost_in_credits
+    #     save
+    # end
+
+    def initialize(starship_hash)
+        starship_hash.each do |k, v| 
+            self.send("#{k}=", v) if self.respond_to?("#{k}=")
+        end
         save
     end
 

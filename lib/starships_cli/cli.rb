@@ -4,6 +4,7 @@ class CLI
     # an entryway method
     def start #called upon instantiating cli
         puts "booting...booting..." 
+        API.fetch_data
         puts "Welcome to the Starship Lot, shopping for a new starship?"
         puts "Let's start with your name:"
         greet(user_input)
@@ -22,8 +23,8 @@ class CLI
 
     #based on user selection we will either show a list of starships
     def starships_list #gets
-        ["starship1", "starship2", "starship3"].each.with_index(1) do |starship, i| 
-            puts "#{i}. #{starship}"
+        Starship.all.each.with_index(1) do |starship, i| 
+            puts "#{i}. #{starship.name}"
         end
         starship_selection
     end 
@@ -39,18 +40,31 @@ class CLI
     end
 
     def starship_selection 
+        puts ""
         puts "Select a starship for more detail"
 
         selection = user_input
 
-        # Starship.find_starships(selection)
-            # query starship class to find details
-        puts "#{selection}" 
-    
+        starship = Starship.find_starships(selection)
+        # query starship class to find details
+        starship_details(starship)
+    end
+
+    def starship_details(starship) #
+        puts ""
+        puts ""
+        puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+        puts "Name: #{starship.name}"
+        puts "Model: #{starship.model}"
+        puts "Manufacturer: #{starship.manufacturer}"
+        puts "Cost In Credits: #{starship.cost_in_credits}"
+        puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+        menu 
     end
 
     def menu 
         selection = user_input
+       
         # case selection
         #     when selection == 'y'
         #         # print the starship list and
