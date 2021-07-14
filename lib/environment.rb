@@ -6,4 +6,6 @@ require "bundler"
 
 Bundler.require
 
-puts "in environment"
+require_relative "./starships_cli/cli"
+require_relative "./starships_cli/api"
+require_relative "./starships_cli/starships"
