@@ -27,6 +27,7 @@ class CLI
         ["starship1", "starship2", "starship3"].each.with_index(1) do |starship, i| 
             puts "#{i}, #{starship}"
         end
+        starship_selection
     end 
     # give them an error message
     # exit
@@ -36,8 +37,16 @@ class CLI
 
     def invalid 
         puts "Does not compute...error error"
-        
+
         menu
+    end
+
+    def starship_selection 
+        puts "Select a starship for more detail"
+
+        selection == user_input
+
+        # query starship class to find details
     end
 
     def menu #
