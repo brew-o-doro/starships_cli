@@ -1,9 +1,7 @@
 # responsible communication between user and data
 
 class CLI
-
     # an entryway method
-
     def start #called upon instantiating cli
         puts "booting...booting..." 
         puts "Welcome to the Starship Lot, shopping for a new starship?"
@@ -25,12 +23,11 @@ class CLI
     #based on user selection we will either show a list of starships
     def starships_list #gets
         ["starship1", "starship2", "starship3"].each.with_index(1) do |starship, i| 
-            puts "#{i}, #{starship}"
+            puts "#{i}. #{starship}"
         end
         starship_selection
     end 
-    # give them an error message
-    # exit
+ 
     def goodbye #
         puts "May the Force Be With You"
     end
@@ -44,13 +41,15 @@ class CLI
     def starship_selection 
         puts "Select a starship for more detail"
 
-        selection == user_input
+        selection = user_input
 
-        Starship.find_starships(selection)
-        # query starship class to find details
+        # Starship.find_starships(selection)
+            # query starship class to find details
+        puts "#{selection}" 
+    
     end
 
-    def menu #
+    def menu 
         selection = user_input
         # case selection
         #     when selection == 'y'
