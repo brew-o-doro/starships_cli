@@ -46,6 +46,7 @@ class CLI
 
         selection == user_input
 
+        Starship.find_starships(selection)
         # query starship class to find details
     end
 

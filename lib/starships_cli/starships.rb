@@ -21,4 +21,12 @@ class Starships
         @@all
     end
 
+    # a method to make a query for starship info
+    def self.find_starships(starship_name)
+        self.all.find { |starship| starship.name == starship_name } 
+
+    end
+
+    
+
 end
